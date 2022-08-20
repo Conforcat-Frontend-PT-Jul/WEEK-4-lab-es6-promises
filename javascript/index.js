@@ -89,9 +89,23 @@ obtainInstruction('steak', 0)
  
 // Iteration 3 using async/await
 async function makeBroccoli() {
+  try{
+    let instruction = "";
+    
+    for (i=0; i < 7; i++) {
+      instruction = await obtainInstruction('broccoli', i);
+      document.querySelector("#broccoli").innerHTML += `<li>${instruction}</li>`;
+    }
 
+    document.querySelector("#broccoli").innerHTML += `<li>Broccoli is ready!</li>`;
+    document.querySelector("#broccoliImg").removeAttribute("hidden");
+
+  } catch (error) {
+    console.log(error);
+  }
 }
 
+makeBroccoli();
 
 // Bonus 2 - Promise all
 const promiseOfStep1 = obtainInstruction('brusselsSprouts', 0);
@@ -113,8 +127,8 @@ Promise.all([
   promiseOfStep7,
   promiseOfStep8
 ]).then((steps) => {
-  steps.forEach(instruccion => {
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${instruccion}</li>`;
+  steps.forEach(instruction => {
+    document.querySelector("#brusselsSprouts").innerHTML += `<li>${instruction}</li>`;
   });
   document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels sprouts are ready!</li>`;
   document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
