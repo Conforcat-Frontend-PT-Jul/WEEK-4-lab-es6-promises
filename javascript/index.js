@@ -82,12 +82,11 @@ obtainInstruction('steak', 0)
   })
   .then((step7) => {
     document.querySelector("#steak").innerHTML += `<li>${step7}</li>`
-    return obtainInstruction('steak', 8);
+    document.querySelector("#steak").innerHTML += `<li>Stake is ready!</li>`
   }) 
-  .finally(() => {
-    console.log('Stake is ready!');
-  });
-
+  .catch((error) => {
+        console.error(error);
+  })
 
 // Iteration 3 using async/await
 // ...
