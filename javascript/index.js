@@ -8,29 +8,26 @@
 // Iteration 1 - using callbacks
 getInstruction("mashedPotatoes", 0, (step0) => {
   document.querySelector("#mashedPotatoes").innerHTML += `<li>${step0}</li>`;
-  getInstruction("mashedPotatoes", 1, (step2) => {
-    document.querySelector("#mashedPotatoes").innerHTML += `<li>${step2}</li>`;
-    getInstruction("mashedPotatoes", 2, (step3) => {
+  getInstruction("mashedPotatoes", 1, (step1) => {
+    document.querySelector("#mashedPotatoes").innerHTML += `<li>${step1}</li>`;
+    getInstruction("mashedPotatoes", 2, (step2) => {
       document.querySelector(
         "#mashedPotatoes"
-      ).innerHTML += `<li>${step3}</li>`;
-
-      getInstruction("mashedPotatoes", 3, (step4) => {
+      ).innerHTML += `<li>${step2}</li>`;
+      getInstruction("mashedPotatoes", 3, (step3) => {
         document.querySelector(
           "#mashedPotatoes"
-        ).innerHTML += `<li>${step4}</li>`;
-        getInstruction("mashedPotatoes", 4, (step5) => {
+        ).innerHTML += `<li>${step3}</li>`;
+        getInstruction("mashedPotatoes", 4, (step4) => {
           document.querySelector(
             "#mashedPotatoes"
-          ).innerHTML += `<li>${step5}</li>`;
-          getInstruction("mashedPotatoes", 4, (step5) => {
-            document.querySelector(
-              "#mashedPotatoes"
-            ).innerHTML += `<li>Mashed potatoes are ready!</li>`;
-            document
-              .querySelector("#mashedPotatoesImg")
-              .removeAttribute("hidden");
-          });
+          ).innerHTML += `<li>${step4}</li>`;
+          document.querySelector(
+            "#mashedPotatoes"
+          ).innerHTML += `<li>Mashed potatoes are ready!</li>`;
+          document
+            .querySelector("#mashedPotatoesImg")
+            .removeAttribute("hidden");
         });
       });
     });
@@ -82,68 +79,8 @@ obtainInstruction("steak", 0)
   .finally(() => {
     return (document.querySelector(
       "#steak"
-    ).innerHTML += `<li>Stake is ready!</li>`);
+    ).innerHTML += `<li>Steak is ready!</li>`);
   });
-
-// obtainInstruction("brusselsSprouts", 0)
-//   .then((step0) => {
-//     document.querySelector("#brusselsSprouts").innerHTML += `<li>${step0}</li>`;
-//   })
-//   .then(() => {
-//     return obtainInstruction("brusselsSprouts", 1).then((step1) => {
-//       document.querySelector(
-//         "#brusselsSprouts"
-//       ).innerHTML += `<li>${step1}</li>`;
-//     });
-//   })
-//   .then(() => {
-//     return obtainInstruction("brusselsSprouts", 2).then((step2) => {
-//       document.querySelector(
-//         "#brusselsSprouts"
-//       ).innerHTML += `<li>${step2}</li>`;
-//     });
-//   })
-//   .then(() => {
-//     return obtainInstruction("brusselsSprouts", 3).then((step3) => {
-//       document.querySelector(
-//         "#brusselsSprouts"
-//       ).innerHTML += `<li>${step3}</li>`;
-//     });
-//   })
-//   .then(() => {
-//     return obtainInstruction("brusselsSprouts", 4).then((step4) => {
-//       document.querySelector(
-//         "#brusselsSprouts"
-//       ).innerHTML += `<li>${step4}</li>`;
-//     });
-//   })
-//   .then(() => {
-//     return obtainInstruction("brusselsSprouts", 5).then((step5) => {
-//       document.querySelector(
-//         "#brusselsSprouts"
-//       ).innerHTML += `<li>${step5}</li>`;
-//     });
-//   })
-//   .then(() => {
-//     return obtainInstruction("brusselsSprouts", 6).then((step6) => {
-//       document.querySelector(
-//         "#brusselsSprouts"
-//       ).innerHTML += `<li>${step6}</li>`;
-//     });
-//   })
-//   .then(() => {
-//     return obtainInstruction("brusselsSprouts", 7).then((step7) => {
-//       document.querySelector(
-//         "#brusselsSprouts"
-//       ).innerHTML += `<li>${step7}</li>`;
-//       document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
-//     });
-//   })
-//   .finally(() => {
-//     return (document.querySelector(
-//       "#brusselsSprouts"
-//     ).innerHTML += `<li>Brussels sprouts are ready!</li>`);
-//   });
 
 // Iteration 3 using async/await
 async function makeBroccoli() {
