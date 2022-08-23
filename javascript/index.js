@@ -90,10 +90,8 @@ obtainInstruction('steak', 0)
 // Iteration 3 using async/await
 async function makeBroccoli() {
   try{
-    let instruction = "";
-    
     for (i=0; i < 7; i++) {
-      instruction = await obtainInstruction('broccoli', i);
+      const instruction = await obtainInstruction('broccoli', i);
       document.querySelector("#broccoli").innerHTML += `<li>${instruction}</li>`;
     }
 
