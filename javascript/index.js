@@ -47,61 +47,37 @@ getInstruction("mashedPotatoes", 0, (step0) => {
 }, (error) => console.log(error));
 
 // Iteration 2 - using promises
-// obtainInstruction('steak', 0)
-//   .then( (step0) => {
-//     document.querySelector("#steak").innerHTML += `<li>${step0}</li>`;
-//     return obtainInstruction('steak', 1);
-//   })
-//   .then( (step1) => {
-//     document.querySelector("#steak").innerHTML += `<li>${step1}</li>`;
-//     return obtainInstruction('steak', 2);
-//   })
-//   .then( (step2) => {
-//     document.querySelector("#steak").innerHTML += `<li>${step2}</li>`;
-//     return obtainInstruction('steak', 3);
-//   })
-//   .then( (step3) => {
-//     document.querySelector("#steak").innerHTML += `<li>${step3}</li>`;
-//     return obtainInstruction('steak', 4);
-//   })
-//   .then( (step4) => {
-//     document.querySelector("#steak").innerHTML += `<li>${step4}</li>`;
-//     return obtainInstruction('steak', 5);
-//   })
-//   .then( (step5) => {
-//     document.querySelector("#steak").innerHTML += `<li>${step5}</li>`;
-//     return obtainInstruction('steak', 6);
-//   })
-//   .then( (step6) => {
-//     document.querySelector("#steak").innerHTML += `<li>${step6}</li>`;
-//     return obtainInstruction('steak', 7);
-//   })
-//   .then( (step7) => {
-//     document.querySelector("#steak").innerHTML += `<li>${step7}</li>`;
-//     document.querySelector("#steak").innerHTML += `<li>Stake is ready!</li>`;
-//   })
-//   .catch((err) => {
-//     document.querySelector("#steak").innerHTML += `<li>Error ocurred...</li>`;
-//     console.error(err);
-//   })
-//   .finally(() => {
-//     document.querySelector("#steakImg").removeAttribute("hidden");
-//   });
-
-const promesas = [
-  obtainInstruction('steak', 0),
-  obtainInstruction('steak', 1),
-  obtainInstruction('steak', 2),
-  obtainInstruction('steak', 3),
-  obtainInstruction('steak', 4),
-  obtainInstruction('steak', 5),
-  obtainInstruction('steak', 6),
-  obtainInstruction('steak', 7)
-]
-
-Promise.all(promesas)
-  .then((valores) => {
-    valores.forEach(valor => document.querySelector("#steak").innerHTML += `<li>${valor}</li>`);
+obtainInstruction('steak', 0)
+  .then( (step0) => {
+    document.querySelector("#steak").innerHTML += `<li>${step0}</li>`;
+    return obtainInstruction('steak', 1);
+  })
+  .then( (step1) => {
+    document.querySelector("#steak").innerHTML += `<li>${step1}</li>`;
+    return obtainInstruction('steak', 2);
+  })
+  .then( (step2) => {
+    document.querySelector("#steak").innerHTML += `<li>${step2}</li>`;
+    return obtainInstruction('steak', 3);
+  })
+  .then( (step3) => {
+    document.querySelector("#steak").innerHTML += `<li>${step3}</li>`;
+    return obtainInstruction('steak', 4);
+  })
+  .then( (step4) => {
+    document.querySelector("#steak").innerHTML += `<li>${step4}</li>`;
+    return obtainInstruction('steak', 5);
+  })
+  .then( (step5) => {
+    document.querySelector("#steak").innerHTML += `<li>${step5}</li>`;
+    return obtainInstruction('steak', 6);
+  })
+  .then( (step6) => {
+    document.querySelector("#steak").innerHTML += `<li>${step6}</li>`;
+    return obtainInstruction('steak', 7);
+  })
+  .then( (step7) => {
+    document.querySelector("#steak").innerHTML += `<li>${step7}</li>`;
     document.querySelector("#steak").innerHTML += `<li>Stake is ready!</li>`;
   })
   .catch((err) => {
@@ -113,7 +89,43 @@ Promise.all(promesas)
   });
 
 // Iteration 3 using async/await
-// ...
+async function makeBroccoli() {
+  try {
+    for (let i = 0; i < 7; i++) {
+      const val = await obtainInstruction('broccoli', i);
+      document.querySelector("#broccoli").innerHTML += `<li>${val}</li>`;
+    }
+    document.querySelector("#broccoli").innerHTML += `<li>Broccoli is ready!</li>`;
+  } catch (err) {
+    document.querySelector("#broccoli").innerHTML += `<li>Error ocurred...</li>`;
+    console.error(err);
+  }
+  document.querySelector("#broccoliImg").removeAttribute("hidden");
+}
+makeBroccoli();
+
 
 // Bonus 2 - Promise all
-// ...
+const promesas = [
+  obtainInstruction('brusselsSprouts', 0),
+  obtainInstruction('brusselsSprouts', 1),
+  obtainInstruction('brusselsSprouts', 2),
+  obtainInstruction('brusselsSprouts', 3),
+  obtainInstruction('brusselsSprouts', 4),
+  obtainInstruction('brusselsSprouts', 5),
+  obtainInstruction('brusselsSprouts', 6),
+  obtainInstruction('brusselsSprouts', 7)
+]
+
+Promise.all(promesas)
+  .then((valores) => {
+    valores.forEach(valor => document.querySelector("#brusselsSprouts").innerHTML += `<li>${valor}</li>`);
+    document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels sprouts are ready!</li>`;
+  })
+  .catch((err) => {
+    document.querySelector("#brusselsSprouts").innerHTML += `<li>Error ocurred...</li>`;
+    console.error(err);
+  })
+  .finally(() => {
+    document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
+  });
