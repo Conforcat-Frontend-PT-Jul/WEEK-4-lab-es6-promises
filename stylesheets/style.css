@@ -85,7 +85,14 @@ button:hover {
   from {
     transform: rotateX(3000deg) translate(-50%, -50%) scale(0);
   }
+
   to {
     transform: rotateX(0deg) translate(-50%, -50%) scale(1);
   }
+}
+
+.audio {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
 }
