@@ -46,6 +46,9 @@ getInstruction("mashedPotatoes", 0, (step0) => {
           document.querySelector(
             "#mashedPotatoes"
           ).innerHTML += `<li>Mashed potatoes are ready!</li>`;
+          document
+            .querySelector("#mashedPotatoesImg")
+            .removeAttribute("hidden");
         });
       });
     });
@@ -93,16 +96,35 @@ obtainInstruction("steak", 0)
     return obtainInstruction("steak", 8);
   })
 
-  .finally(() => {
+  .then(() => {
     return (document.querySelector(
       "#steak"
     ).innerHTML += `<li>Stake is ready!</li>`);
+  })
+
+  .finally(() => {
+    return document.querySelector("#steakImg").removeAttribute("hidden");
   });
 
-// ... Your code here
-
 // Iteration 3 using async/await
-// ...
-
+async function makeBroccoli() {
+  try {
+    for (let i = 0; i < broccoli.length; i++) {
+      let receipeBroccoli = await obtainInstruction("broccoli", i);
+      document.querySelector(
+        "#broccoli"
+      ).innerHTML += `<li>${receipeBroccoli}</li>`;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+  {
+    document.querySelector(
+      "#broccoli"
+    ).innerHTML += `<li>"Broccoli is ready!"</li>`;
+    document.querySelector("#broccoliImg").removeAttribute("hidden");
+  }
+}
+makeBroccoli();
 // Bonus 2 - Promise all
 // ...
