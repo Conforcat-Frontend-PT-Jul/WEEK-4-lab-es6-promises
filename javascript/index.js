@@ -121,7 +121,21 @@ obtainInstruction("steak", 0)
   });
 
 // Iteration 3 using async/await
-// ...
+
+async function makeBroccoli() {
+  try {
+    for (let i = 0; i < broccoli.length; i++) {
+      let step = await obtainInstruction("broccoli", i);
+      document.querySelector("#broccoli").innerHTML += `<li>${step}</li>`;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+  document.querySelector(
+    "#broccoli"
+  ).innerHTML += `<li>Broccoli is Ready!</li>`;
+  document.querySelector("#broccoliImg").removeAttribute("hidden");
+}
+makeBroccoli();
 
 // Bonus 2 - Promise all
-// ...
