@@ -80,107 +80,54 @@ obtainInstruction('steak', 0)
   .then ( (step6) => {
     document.querySelector("#steak").innerHTML += `<li>${step6}</li>`
     return obtainInstruction('steak', 7)
-  })
-  .then ( (step7) => {
-    /* document.querySelector("#steak").innerHTML += `<li>${step7}</li>` */
-    document.querySelector("#steak").innerHTML += '<li>Steak is ready!</li>'
-    return obtainInstruction('steak', 8)
-  .then (
-    
-  )
-
-  })
-
-  obtainInstruction('brusselsSprouts', 0)
-  .then( (step0) => {
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step0}</li>`
-    return obtainInstruction('brusselsSprouts', 1)
-  })
-
-  .then( (step1) => {
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step1}</li>`
-    return obtainInstruction('brusselsSprouts', 2)
-  })
-
-  .then( (step2) => {
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step2}</li>`
-    return obtainInstruction('brusselsSprouts', 3)
-  })
-
-  .then( (step3) => {
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step3}</li>`
-    return obtainInstruction('brusselsSprouts', 4)
-  })
-
-  .then( (step4) => {
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step4}</li>`
-    return obtainInstruction('brusselsSprouts', 5)
-  })
-
-  .then( (step5) => {
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step5}</li>`
-    return obtainInstruction('brusselsSprouts', 6)
-  })
-
-  .then( (step6) => {
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step6}</li>`
-    return obtainInstruction('brusselsSprouts', 7)
-  })
-
-  .then( (step7) => {
-    document.querySelector("#brusselsSprouts").innerHTML += `<li>${step7}</li>`
-    return obtainInstruction('brusselsSprouts', 8)
-  })
-
-  .then( (step8) => {
-    document.querySelector("#brusselsSprouts").innerHTML += '<li> Brussels Sprouts are ready!</li>'
-      return obtainInstruction('brusselsSprouts', 8)
-
-  })
-  .then ()
-  
-  
-
+    .finally (() => {
+      document.querySelector("#steak").innerHTML += '<li>Steak is ready!</li>'
+      document.getElementById('steakImg').removeAttribute("hidden")
+    });
+  }).catch((error)=> console.log(error));
 
 // Iteration 3 using async/await
 // ...
+
 async function makeBroccoli() {
-  obtainInstruction('broccoli', 0)
- 
+  try {
+    for (let i = 0; i < broccoli.length; i++) {
+      let instruction = await obtainInstruction('broccoli', i)
+      document.querySelector("#broccoli").innerHTML += `<li>${instruction}</li>`
+    }
+    document.querySelector("#broccoli").innerHTML += `<li>Broccoli is ready!</li>`
+    document.getElementById("broccoliImg").removeAttribute("hidden")
+    } catch (error)  {
+      console.log(error)
+    }    
 
-
-}
+  }
+  makeBroccoli();
 
 // Bonus 2 - Promise all
 // ...
+const promises = [
+  obtainInstruction('brusselsSprouts', 0),
+  obtainInstruction('brusselsSprouts', 1),
+  obtainInstruction('brusselsSprouts', 2),
+  obtainInstruction('brusselsSprouts', 3),
+  obtainInstruction('brusselsSprouts', 4),
+  obtainInstruction('brusselsSprouts', 5),
+  obtainInstruction('brusselsSprouts', 6),
+  obtainInstruction('brusselsSprouts', 7)
+]
 
+Promise.all(promises)
+  .then((values)=> {
+    values.forEach(instruction => {
+      document.querySelector("#brusselsSprouts").innerHTML += `<li>${instruction}</li>`
+    })
 
+    .catch((error) => {
 
+    })
+    .finally(()=> {
+      document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels sprouts are ready!</li>`;
+      document.getElementById("#sebruslsSproutsImg").removeAttribute("hidden")}
 
-
-
-
-
-
-
-
-
-
-/* try {
-  const lista = [0, 1, 2, 3];
-  const pasos = lista.map(() => {
-      const paso = await getDirection(i, 600);
-      console.log(paso);
-      return paso; */
-
-/*       async function cosas () {
-        const response = await fetch("https://api.spacexdata.com/v4/launches");
-        if (response.ok) {
-            const json = await response.json()
-            json.forEach(item => {
-                document.write(`<li>${item.date_local}</li>`);
-            })
-        }
-    }
-    
-    cosas() */ 
+    )})
