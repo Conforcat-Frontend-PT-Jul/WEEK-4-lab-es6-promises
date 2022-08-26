@@ -137,7 +137,7 @@ promise1.then(function(done){
 // Iteration 3 using async/await
 // ...
 
-async function makeBroccoli (){
+async function makeBroccoli () {
 document.getElementById ("broccoli").innerHTML += `<li>${await obtainInstruction("broccoli",0)}</li>`;
 document.getElementById ("broccoli").innerHTML += `<li>${await obtainInstruction("broccoli",1)}</li>`;
 document.getElementById ("broccoli").innerHTML += `<li>${await obtainInstruction("broccoli",2)}</li>`;
@@ -145,7 +145,6 @@ document.getElementById ("broccoli").innerHTML += `<li>${await obtainInstruction
 document.getElementById ("broccoli").innerHTML += `<li>${await obtainInstruction("broccoli",4)}</li>`;
 document.getElementById ("broccoli").innerHTML += `<li>${await obtainInstruction("broccoli",5)}</li>`;
 document.getElementById ("broccoli").innerHTML += `<li>${await obtainInstruction("broccoli",6)}</li>`;
-document.getElementById ("broccoli").innerHTML += `<li>${await obtainInstruction("broccoli",7)}</li>`;
 
 document.querySelector("#broccoliImg").removeAttribute("hidden");
 
