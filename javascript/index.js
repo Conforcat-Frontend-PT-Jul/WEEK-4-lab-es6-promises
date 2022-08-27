@@ -119,15 +119,19 @@ const promises = [
 
 Promise.all(promises)
   .then((values)=> {
-    values.forEach(instruction => {
+    console.log(values)
+    values.forEach (instruction => {
+      console.log(instruction)
       document.querySelector("#brusselsSprouts").innerHTML += `<li>${instruction}</li>`
     })
+  })
 
-    .catch((error) => {console.log(error)
+  .catch((error) => {console.log(error)
     })
 
     .finally(()=> {
       document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels sprouts are ready!</li>`
-      document.querySelector("#brusselsSproutsImg").removeAttribute("hidden")}
+      document.querySelector("#brusselsSproutsImg").removeAttribute("hidden")
+    })
 
-    )})
+  
