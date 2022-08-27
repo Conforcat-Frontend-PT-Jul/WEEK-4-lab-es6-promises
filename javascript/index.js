@@ -26,7 +26,7 @@
 //  }, (error) => console.log(error));
 
 //------------------------------------------------------------------START WORK----------------------------------------------
-// Iteration 1 - using callbacks
+// Iteration 1 - using callbacks (function copied from the indications) Done same as lesson 
 getInstruction('mashedPotatoes', 0, (step0) => {
   document.querySelector("#mashedPotatoes").innerHTML += `<li>${step0}</li>`;
 
@@ -42,15 +42,17 @@ getInstruction('mashedPotatoes', 0, (step0) => {
         getInstruction('mashedPotatoes', 4, (step4) => {
           document.querySelector("#mashedPotatoes").innerHTML += `<li>${step4}</li>`;
           document.querySelector("#mashedPotatoes").innerHTML += `<li>Mashed potatoes are ready!</li>`;
-          //document.querySelector("#mashedPotatoesImg").removeAttribute("hidden");
+          document.querySelector("#mashedPotatoesImg").removeAttribute("hidden");
+          //document.querySelector("#mashedPotatoesImg").removeAttribute("hidden"); //before bonus
           
-          }, (error) => console.log(error)); // step4
+          }, (error) => console.log(error)); // step4 
         }, (error) => console.log(error)); // step3  
       }, (error) => console.log(error)); // step2
     }, (error) => console.log(error)); // step 1
   }, (error) => console.log(error)); // step 0
 
 // Iteration 2 - using promises
+// done 1 by 1 with .then + .catch + .finally
 obtainInstruction('steak', 0)
   .then( (step0) => {
     document.querySelector("#steak").innerHTML += `<li>${step0}</li>`;
@@ -89,25 +91,50 @@ obtainInstruction('steak', 0)
   })
   .finally(() => {
     document.querySelector("#steak").innerHTML += `<li>Steak is ready!</li>`;
-    //document.querySelector("#steakImg").removeAttribute("hidden");
+    document.querySelector("#steakImg").removeAttribute("hidden");
+    //document.querySelector("#steakImg").removeAttribute("hidden"); //before bonus
   });
 
 // Iteration 3 using async/await
+// ask why cannot do 1 by 1 with await, how can I do it one by one? 
 async function makeBroccoli() {
   try{
-    for (i=0; i < 7; i++) {
-      const instruction = await obtainInstruction('broccoli', i);
-      document.querySelector("#broccoli").innerHTML += `<li>${instruction}</li>`;
+    //await obtainInstruction('broccoli', 0); // if I do an arrow funct doesnt let me retrieve data from data
+    //document.querySelector("#broccoli").innerHTML += `<li>${0}</li>`;
+    for (i=0; i < broccoli.length; i++) {
+      const step = await obtainInstruction('broccoli', i);
+      document.querySelector("#broccoli").innerHTML += `<li>${step}</li>`;
     }
     document.querySelector("#broccoli").innerHTML += `<li>Broccoli is ready!</li>`;
-    //document.querySelector("#broccoliImg").removeAttribute("hidden");
+    document.querySelector("#broccoliImg").removeAttribute("hidden");
+    //document.querySelector("#broccoliImg").removeAttribute("hidden"); //before bonus
 
   } catch (error) {
         console.log(error);
   }
 }
-
 makeBroccoli();
 
+// Bonus 1 - Eliminate the image hidden attribute (DONE) 
+
 // Bonus 2 - Promise all
-// ...
+const pr1 = obtainInstruction('brusselsSprouts', 0);
+const pr2 = obtainInstruction('brusselsSprouts', 1);
+const pr3 = obtainInstruction('brusselsSprouts', 2);
+const pr4 = obtainInstruction('brusselsSprouts', 3);
+const pr5 = obtainInstruction('brusselsSprouts', 4);
+const pr6 = obtainInstruction('brusselsSprouts', 5);
+const pr7 = obtainInstruction('brusselsSprouts', 6);
+const pr8 = obtainInstruction('brusselsSprouts', 7);
+
+Promise.all([pr1, pr2, pr3, pr4, pr5, pr6, pr7, pr8])
+  .then((steps) => {
+    steps.forEach(item => {
+    document.querySelector("#brusselsSprouts").innerHTML += `<li>${item}</li>`;
+    });
+  
+  document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels sprouts are ready!</li>`;
+  document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
+  //document.querySelector("#brusselsSproutsImg").removeAttribute("hidden"); //before bonus
+  
+  });
