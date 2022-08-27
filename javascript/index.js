@@ -138,3 +138,5 @@ Promise.all([pr1, pr2, pr3, pr4, pr5, pr6, pr7, pr8])
   //document.querySelector("#brusselsSproutsImg").removeAttribute("hidden"); //before bonus
   
   });
+  //.catch((error) => {
+   // console.log(error)}); (me da error es decir no me corre en chrome porque?)
