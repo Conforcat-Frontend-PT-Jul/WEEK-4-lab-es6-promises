@@ -123,11 +123,11 @@ Promise.all(promises)
       document.querySelector("#brusselsSprouts").innerHTML += `<li>${instruction}</li>`
     })
 
-    .catch((error) => {
-
+    .catch((error) => {console.log(error)
     })
+
     .finally(()=> {
-      document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels sprouts are ready!</li>`;
-      document.getElementById("#sebruslsSproutsImg").removeAttribute("hidden")}
+      document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels sprouts are ready!</li>`
+      document.querySelector("#brusselsSproutsImg").removeAttribute("hidden")}
 
     )})
