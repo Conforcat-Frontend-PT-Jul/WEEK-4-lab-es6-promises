@@ -102,7 +102,7 @@ getInstruction('mashedPotatoes', 0, (step0) => {
 
 
 
-After the last step, you should display an additional `<li>` with the text: `Mashed potatoes are ready!`.
+After the last step, you should display an additional `<li>` with the text: c.
 
 
 
